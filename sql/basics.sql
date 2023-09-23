@@ -82,7 +82,77 @@ alter table customer_info drop column email;
 
 desc customer_info;
 
-select *from customer_info
+select *from customer_info;
+
+#sql constraints
+#notnull
+create table students(
+	id int not null,
+    first_name varchar(25) not null,
+    last_name varchar(25) not null,
+    age int 
+);
+
+select *from students;
+desc students;
+
+# now i want to add notnull feature to age so by using alter table we can doo it
+alter table students modify age int not null;
+desc students;
+
+#unique
+create table person(
+	id int not null,
+    first_name varchar(25) not null,
+    last_name varchar(25) not null,
+    age int not null,
+    unique(id)
+);
+
+insert into person values(3,'Amit2','Rawat2','21');
+
+
+select *from person;
+
+alter table person 
+ADD unique(first_name);
+
+desc person;
+
+Alter table person
+add constraint uc_person unique(age,first_name);
+
+desc person;
+#here age  becomes multi unique constraint
+#drop unique constraints
+
+alter table person 
+drop index uc_person;
+
+desc person;
+
+#primary key
+
+create table person1(
+ id int not null,
+ first_name varchar(25) not null,
+ last_name varchar(25),
+ age int,
+ constraint pk_person primary key(id,last_name)
+);
+
+desc person1;
+
+alter table person1
+add primary key(id);
+
+alter table person1
+drop primary key;
+
+desc person1;
+
+
+
 
 
 
