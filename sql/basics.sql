@@ -152,6 +152,97 @@ drop primary key;
 desc person1;
 
 
+use customer;
+
+create table person2(
+	id int not null,
+    first_name varchar(25) not null,
+    last_name varchar(25) not null,
+    age int
+);
+desc person2;
+
+drop table person2;
+
+alter table person2 
+add primary key(id);
+
+drop table person2;
+
+
+alter table person2
+add constraint pk_person2 primary key(id,age);
+
+alter table person2
+drop primary key;
+
+
+
+-- foreign key
+
+
+create table person2(
+	id int not null,
+    first_name varchar(25) not null,
+    last_name varchar(25) not null,
+    age int,
+    salary int,
+    primary key(id)
+);
+desc person2;
+
+create table department(
+	id int not null,
+    department_id int not null,
+    department_name varchar(25) not null,
+    primary key(department_id)
+);
+desc department;
+
+alter table department 
+add foreign key(id) references person2(id);
+
+
+drop table department;
+
+drop table person2;
+ -- check constraints
+ 
+ create table person2(
+	id int not null,
+    first_name varchar(25) not null,
+    last_name varchar(25) not null,
+    age int,
+    salary int,
+    primary key(id),
+    check (salary<50000)
+);
+ desc person2;
+ 
+ insert into person2 values(2,'Amit','Naik','21',40000);
+ 
+ select *from person2;
+ 
+ 
+ #default
+ 
+ drop table person2;
+ 
+  create table person2(
+	id int not null,
+    first_name varchar(25) not null,
+    last_name varchar(25) not null,
+    city_name varchar(25) default 'delhi'
+);
+desc person2;
+
+alter table person2
+alter  city_name drop default;
+
+
+
+
+
 
 
 
