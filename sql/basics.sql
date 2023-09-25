@@ -13,7 +13,7 @@ create table customer_info(
     primary key(id)
 );
 
-select *from customer_inf0;
+select *from customer_info;
 show tables;
 
 #insert records in table
@@ -240,10 +240,37 @@ alter table person2
 alter  city_name drop default;
 
 
+show tables;
+ 
+ select *from person2;
+ 
+ create index index_city_name
+ on person2(city_name);
+ 
+
+desc person2;
+
+show tables;
+
+drop table students;
+
+create table student(
+	id int not null,
+    first_name varchar(25),
+    last_name varchar(25),
+    age int
+);
+desc student;
+
+create index index_age
+on student(age);
+
+create index index_age_first_name
+on student(age,first_name);
 
 
-
-
+alter table student 
+drop index index_age;
 
 
 
